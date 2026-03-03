@@ -1,0 +1,52 @@
+###################################################################
+
+# Created by write_sdc on Mon Mar  2 17:44:13 2026
+
+###################################################################
+set sdc_version 2.1
+
+set_units -time ns -resistance kOhm -capacitance pF -voltage V -current uA
+set_driving_cell -lib_cell INVX1 [get_ports clka]
+set_driving_cell -lib_cell INVX1 [get_ports clkb]
+set_driving_cell -lib_cell INVX1 [get_ports restart]
+set_driving_cell -lib_cell INVX1 [get_ports btn_left]
+set_driving_cell -lib_cell INVX1 [get_ports btn_right]
+set_driving_cell -lib_cell INVX1 [get_ports btn_rotate]
+set_driving_cell -lib_cell INVX1 [get_ports btn_drop]
+set_driving_cell -lib_cell INVX1 [get_ports collision_flag]
+set_driving_cell -lib_cell INVX1 [get_ports row_full_flag]
+set_driving_cell -lib_cell INVX1 [get_ports game_over_flag]
+set_driving_cell -lib_cell INVX1 [get_ports clear_done]
+set_driving_cell -lib_cell INVX1 [get_ports gravity_tick]
+create_clock [get_ports clka]  -period 20  -waveform {0 10}
+set_input_delay -clock clka  1  [get_ports clkb]
+set_input_delay -clock clka  1  [get_ports restart]
+set_input_delay -clock clka  1  [get_ports btn_left]
+set_input_delay -clock clka  1  [get_ports btn_right]
+set_input_delay -clock clka  1  [get_ports btn_rotate]
+set_input_delay -clock clka  1  [get_ports btn_drop]
+set_input_delay -clock clka  1  [get_ports collision_flag]
+set_input_delay -clock clka  1  [get_ports row_full_flag]
+set_input_delay -clock clka  1  [get_ports game_over_flag]
+set_input_delay -clock clka  1  [get_ports clear_done]
+set_input_delay -clock clka  1  [get_ports gravity_tick]
+set_output_delay -clock clka  1  [get_ports alu_op_shift_left]
+set_output_delay -clock clka  1  [get_ports alu_op_shift_right]
+set_output_delay -clock clka  1  [get_ports alu_op_rotate]
+set_output_delay -clock clka  1  [get_ports alu_op_gravity]
+set_output_delay -clock clka  1  [get_ports piece_lock]
+set_output_delay -clock clka  1  [get_ports piece_spawn]
+set_output_delay -clock clka  1  [get_ports clear_row]
+set_output_delay -clock clka  1  [get_ports score_inc]
+set_output_delay -clock clka  1  [get_ports board_reset]
+set_output_delay -clock clka  1  [get_ports disp_row_valid]
+set_output_delay -clock clka  1  [get_ports {disp_row_addr[3]}]
+set_output_delay -clock clka  1  [get_ports {disp_row_addr[2]}]
+set_output_delay -clock clka  1  [get_ports {disp_row_addr[1]}]
+set_output_delay -clock clka  1  [get_ports {disp_row_addr[0]}]
+set_output_delay -clock clka  1  [get_ports out_game_over]
+set_output_delay -clock clka  1  [get_ports out_line_clear]
+set_output_delay -clock clka  1  [get_ports {state[3]}]
+set_output_delay -clock clka  1  [get_ports {state[2]}]
+set_output_delay -clock clka  1  [get_ports {state[1]}]
+set_output_delay -clock clka  1  [get_ports {state[0]}]

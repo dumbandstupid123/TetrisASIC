@@ -1,0 +1,15 @@
+// files that I generated not necessary for running 
+
+work/
+Work/
+WORK/
+*.vcd
+*.wlf
+*.dbg
+transcript
+core.*
+default.svf
+command.log
+Synthesis/WORK/
+Synthesis/command.log
+Synthesis/default.svf

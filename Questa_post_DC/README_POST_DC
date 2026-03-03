@@ -1,0 +1,70 @@
+README_POST_DC
+
+This readme file is after the synthesis of the Verilog files. It differs slightly from the PRE_DC process in several ways:
+
+1. The output Verilog file, here with a .vh extension is used
+2. A Verilog file for the cells in the standard cell library needs to be compiled in as well.
+((Note: although mentioned in class the timescale command may not be needed
+in the testbench in the new version of Questa after synthesis.
+3. The testbench.v file needs an extra definition in the first line exactly
+as:  `timescale 1ns/10ps))
+
+
+Creating a library directory
+
+Questa requires a “library directory” to store information about your project.
+In your working directory (where the simulation project .v files are), type
+
+vlib work
+
+This creates a directory called work needed by Questa. If you delete this directory, you will need to create it again before running any compilations.
+
+Compiling Verilog files
+
+Next from the working directory, type
+
+vlog «list of verilog files»
+
+This might look like after Design Compiler synthesis as:
+
+vlog twoP_FSM.vh osu05_stdcells.v testbench.v
+
+This compiles your .v (and synthesized output .vh) files for simulation.
+If there were no errors, the compilation should list the modules compiled and
+point out the top level modules (ones not included by any other modules).
+If the compilation failed with ERR messages, you will need to revise your .v
+files to address the complaints and recompile. It is a good practice to also
+look for WARN messages and resolve those as well.
+
+Running Questa
+
+To run Questa, from the working directory, type:
+
+vsim «top-level module name»
+
+For example,
+vsim twoP_FSM_tb
+
+if twoP_FSM_tb is the top level testbench module in your design. In an X-ready environment, this should bring up the simulator main window.
+
+You will need to right click in the "Objects" block to
+"Add -> To Wave -> Signals in Design" to see all waveforms in the wave window.
+
+You can start the simulation by typing in the simulator command window:
+run -all
+
+The simulation runs until it encounters a $stop or $finish command in your .v files.
+
+In the Wave window, then you can click on the tab at the bottom that says
+"Wave" to bring that window on top. You can right click in the waveform window
+to "Zoom Full" or use the slider to navigate the simulation.
+
+In the lower left of the Wave window there are six icons.
+On the top row, there is one that that "toggles leaf names." This helps to show
+or hide the Verilog sub-cell hierarchy. Also, to the right of that icon,
+there is "Grid, Timeline, and Cursor Control" button that pops up a menu.
+On the Disply tab of the pop-up menu, you may want to select "Waveform selection
+highlighting." This can help you since now clicking on a signal in the Wave
+window will not highlight that signal.
+
+JRC 1/31/2023 
